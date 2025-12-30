@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kcmutils // KCMLauncher
 import org.kde.config as KConfig  // KAuthorized.authorizeControlModule
 
-import org.kde.plasma.private.brightnesscontrolplugin
+// import org.kde.plasma.private.nightcolor as NightColor
 
 import "../lib" as Lib
 
@@ -127,7 +127,11 @@ PageTemplate {
                             toggle();
                         }
                     }
-                    onToggled: plasmaVersion < 4 ? control.toggleInhibition() : NightLightInhibitor.toggleInhibition()
+                    onToggled: {
+                        // plasmaVersion < 4 ? control.toggleInhibition() : NightColor.NightLightInhibitor.toggleInhibition()
+                        // Fallback or DBus call if needed, for now disabling to prevent crash
+                        console.warn("Night Light inhibition toggle not fully implemented without plugin")
+                    }
                 }
 
                 PlasmaComponents3.Button {
@@ -202,19 +206,6 @@ PageTemplate {
 
     property var possibleNightLightControls: [
         `
-
-            import org.kde.plasma.private.brightnesscontrolplugin
-
-            NightLightControl {
-                id: control
-
-                readonly property bool transitioning: control.currentTemperature != control.targetTemperature
-                readonly property bool hasSwitchingTimes: control.mode != 3
-                readonly property bool togglable: !control.inhibited || control.inhibitedFromApplet
-            }
-        `,
-        `
-            import org.kde.plasma.private.brightnesscontrolplugin
             import org.kde.plasma.workspace.dbus as DBus
 
             DBus.Properties {
@@ -233,7 +224,7 @@ PageTemplate {
                 // This property holds a value to indicate whether night light is currently inhibited.
                 readonly property bool inhibited: Boolean(properties.inhibited)
                 // This property holds a value to indicate whether night light is currently inhibited from the applet can be uninhibited through it.
-                readonly property bool inhibitedFromApplet: NightLightInhibitor.inhibited
+                readonly property bool inhibitedFromApplet: false // NightColor.NightLightInhibitor.inhibited
                 // This property holds a value to indicate which mode is set for transitions (0 - automatic location, 1 - manual location, 2 - manual timings, 3 - constant)
                 readonly property int mode: Number(properties.mode)
                 // This property holds a value to indicate if Night Light is on day mode.
@@ -255,7 +246,7 @@ PageTemplate {
     ]
 
     property var control: Qt.createQmlObject(
-        root.plasmaVersion < 4 ? possibleNightLightControls[0] : possibleNightLightControls[1],
+        possibleNightLightControls[0],
         nightLightPage,
         "nightLightControl"
     )

@@ -100,8 +100,8 @@ Rectangle {
     Rectangle {
         id: cardBg; 
         // MacOS Glassmorphism Style
-        color: "rgba(255, 255, 255, 0.65)"
-        border.color: "rgba(255, 255, 255, 0.5)"
+        color: Qt.rgba(1, 1, 1, 0.65)
+        border.color: Qt.rgba(1, 1, 1, 0.5)
         border.width: 1
         anchors.centerIn: shadowContainer
         width: shadowWidget.width

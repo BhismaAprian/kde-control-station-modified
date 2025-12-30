@@ -28,7 +28,7 @@ Item
         anchors.fill: parent
         
         // Add border for inactive state to match glass style
-        border.color: icon.selected ? "transparent" : "rgba(0,0,0,0.1)"
+        border.color: icon.selected ? "transparent" : Qt.rgba(0, 0, 0, 0.1)
         border.width: icon.selected ? 0 : 1
 
         Kirigami.Icon {

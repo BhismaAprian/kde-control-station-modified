@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import Qt5Compat.GraphicalEffects
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.kirigami as Kirigami 
@@ -140,7 +141,7 @@ Card {
                         height: parent.height
                         radius: height / 2
                         // Glassy track background
-                        color: "rgba(0, 0, 0, 0.1)" 
+                        color: Qt.rgba(0, 0, 0, 0.1)
                         border.color: "transparent"
 
                         Rectangle {
@@ -168,7 +169,7 @@ Card {
                         radius: mediumSizeSlider ? 10 : height / 2
                         // White handle with shadow/border
                         color: "#FFFFFF"
-                        border.color: "rgba(0,0,0,0.1)"
+                        border.color: Qt.rgba(0, 0, 0, 0.1)
                         border.width: 1
                         
                         // Add shadow for handle
