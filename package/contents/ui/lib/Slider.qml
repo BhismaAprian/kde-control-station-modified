@@ -68,6 +68,7 @@ Card {
                 font.weight: Font.Bold
                 font.capitalization: Font.Capitalize
                 elide: Text.ElideRight
+                color: "#333333" // Dark text
             }
 
             PlasmaComponents.Label {
@@ -80,6 +81,7 @@ Card {
                 font.weight: Font.Bold
                 font.capitalization: Font.Capitalize
                 horizontalAlignment: Text.AlignRight
+                color: "#333333" // Dark text
             }
 
 
@@ -96,6 +98,7 @@ Card {
                 Layout.preferredHeight: root.largeFontSize*2
                 Layout.preferredWidth: Layout.preferredHeight
                 Layout.margins: 0
+                color: "#333333" // Dark icon
             }
             
             PlasmaComponents.ToolButton {
@@ -136,14 +139,16 @@ Card {
                         width: slider.availableWidth
                         height: parent.height
                         radius: height / 2
-                        color: root.disabledBgColor
-                        border.color: root.isDarkTheme ? root.disabledBgColor : Qt.rgba(0, 0, 0, 0.27)
+                        // Glassy track background
+                        color: "rgba(0, 0, 0, 0.1)" 
+                        border.color: "transparent"
 
                         Rectangle {
                             id: levelIndicator
                             width: (value - from) / (to - from) * (slider.width - handle.width) + (handle.width)
-                            height: parent.height - 2
-                            color:  highlightColor
+                            height: parent.height
+                            // MacOS Blue for active part
+                            color: "#007AFF"
                             radius: height / 2
                             border.width: 0
                             anchors.verticalCenter: parent.verticalCenter
@@ -161,8 +166,22 @@ Card {
                                         (mediumSizeSlider&&(slider.hovered || slider.pressed)) ? levelIndicator.height*2.5 :
                                         levelIndicator.height
                         radius: mediumSizeSlider ? 10 : height / 2
-                        color: mediumSizeSlider && slider.pressed ? "transparent" : slider.pressed ? "#f0f0f0" : "#f6f6f6"
-                        border.color: "#bdbebf"
+                        // White handle with shadow/border
+                        color: "#FFFFFF"
+                        border.color: "rgba(0,0,0,0.1)"
+                        border.width: 1
+                        
+                        // Add shadow for handle
+                        layer.enabled: true
+                        layer.effect: DropShadow {
+                            transparentBorder: true
+                            horizontalOffset: 0
+                            verticalOffset: 1
+                            radius: 4
+                            samples: 9
+                            color: "rgba(0,0,0,0.2)"
+                        }
+
                         Behavior on implicitWidth {
                             NumberAnimation { duration: 200 }
                         }
