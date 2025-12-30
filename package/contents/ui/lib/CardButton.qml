@@ -47,6 +47,7 @@ Card {
             Layout.rowSpan: (isLongButton && !showTitle) ? 2 : 1
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: showTitle ? Qt.AlignBottom : Qt.AlignVCenter
+            color: "#333333" // Dark text for contrast
         }
         PlasmaComponents.Label {
             id: title
@@ -61,6 +62,7 @@ Card {
             wrapMode: Text.WordWrap
             elide: (plasmoid.configuration.layout == 1 && !isLongButton) ? Text.ElideNone : Text.ElideRight
             visible: text && showTitle
+            color: "#333333" // Dark text for contrast
         }
     }
 }

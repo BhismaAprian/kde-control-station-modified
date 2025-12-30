@@ -41,11 +41,11 @@ Rectangle {
 
     property bool roundedWidget: false
 
-    property int cornerRadius: roundedWidget ? 32 : 12
+    property int cornerRadius: roundedWidget ? 32 : 20
 
     property var margins: shadowContainer.margins
     default property alias content: dataContainer.data
-    radius: 12
+    radius: 20
 
     property bool hovered: false
     property bool showContentOverflowIndicator: false
@@ -99,13 +99,10 @@ Rectangle {
 
     Rectangle {
         id: cardBg; 
-        color: !filled ? "transparent" :
-                root.enableTransparency ? 
-                Qt.rgba(root.themeBgColor.r, root.themeBgColor.g, root.themeBgColor.b, root.transparencyLevel/100)
-                : root.themeBgColor
-
-        border.color: glassEffect ? Qt.rgba(255, 255, 255, 0.18): root.disabledBgColor
-        border.width: root.showBorders && bordr ? 1 : 0
+        // MacOS Glassmorphism Style
+        color: "rgba(255, 255, 255, 0.65)"
+        border.color: "rgba(255, 255, 255, 0.5)"
+        border.width: 1
         anchors.centerIn: shadowContainer
         width: shadowWidget.width
         height: shadowWidget.height
