@@ -43,14 +43,12 @@ Card {
             font.pixelSize: root.largeFontSize
             font.weight: Font.Bold
             elide: Text.ElideRight
-            color: "#333333" // Dark text for contrast
         }
         PlasmaComponents.Label {
             id: subtitle
             Layout.fillWidth: true
             font.pixelSize: root.mediumFontSize
             elide: Text.ElideRight
-            color: "#333333" // Dark text for contrast
         }
     }
 

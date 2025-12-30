@@ -168,7 +168,7 @@ PlasmaComponents3.ItemDelegate {
                 visible: powerManagementItem.inhibitsLidAction || (powerManagementItem.inhibitions.length > 0)
 
                 InhibitionHint {
-                    Layout.fillWidth: true
+                  anchors.fill:parent
                     visible: powerManagementItem.inhibitsLidAction
                     iconSource: "computer-laptop"
                     text: i18nc("Minimize the length of this string as much as possible", "Your laptop is configured not to sleep when closing the lid while an external monitor is connected.")

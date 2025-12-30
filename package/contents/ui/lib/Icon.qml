@@ -23,13 +23,9 @@ Item
     Rectangle {
         id: rect
         radius: width/2
-        // Active state blue, otherwise transparent/grey
-        color: icon.selected ? "#007AFF" : (sourceColor.valid ? sourceColor : "transparent")
+        color: icon.selected ? highlightColor : sourceColor.valid ? sourceColor : root.disabledBgColor
         anchors.fill: parent
         
-        // Add border for inactive state to match glass style
-        border.color: icon.selected ? "transparent" : Qt.rgba(0, 0, 0, 0.1)
-        border.width: icon.selected ? 0 : 1
 
         Kirigami.Icon {
             id: icon
@@ -39,8 +35,7 @@ Item
             anchors.centerIn: parent
             selected: false
             isMask: customIcon
-            // White icon when selected (blue bg), dark icon otherwise
-            color: selected ? "white" : "#333333"
+            color: selected ? iconColor : Kirigami.Theme.textColor
         }
     }
 

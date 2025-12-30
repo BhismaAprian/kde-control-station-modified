@@ -43,13 +43,13 @@ PageTemplate {
 
     property var possibleInhibitionControls: [
         `
-            import org.kde.plasma.private.battery
+            import org.kde.plasma.private.batterymonitor
             PowerManagementControl {
                 id: inhibitionControl
             }
         `,
         `
-            import org.kde.plasma.private.battery
+            import org.kde.plasma.private.batterymonitor
             InhibitionControl {
                 id: inhibitionControl
             }

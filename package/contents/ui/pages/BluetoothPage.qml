@@ -32,8 +32,7 @@ PageTemplate {
     PlasmaBt.DevicesProxyModel {
         id: devicesModel
      //   hideBlockedDevices: true
-        // sourceModel: PlasmaBt.SharedDevicesStateProxyModel // This was causing the loop
-        sourceModel: BluezQt.Manager.devices
+        sourceModel: PlasmaBt.SharedDevicesStateProxyModel
     }
 
     function setBluetoothEnabled(enable: bool): void {
